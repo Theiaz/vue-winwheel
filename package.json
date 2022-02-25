@@ -1,11 +1,15 @@
 {
-	"name": "vue-winwheel",
-	"version": "1.0.0",
+	"name": "demo-vue-winwheel",
+	"version": "0.1.2",
 	"author": {
 		"name": "rebotak",
 		"email": "rebotak@gmail.com"
 	},
-	"main": "./vue-winwheel.vue",
+	"scripts": {
+		"serve": "vue-cli-service serve",
+		"build": "vue-cli-service build"
+	},
+	"main": "./src/App.vue",
 	"keywords": [
 		"vue",
 		"vue-winwheel",
@@ -19,6 +23,23 @@
 	},
 	"license": "MIT",
 	"dependencies": {
-		"gsap": "^2.0.2"
-	}
+		"gsap": "^2.0.2",
+		"vue": "^2.5.17",
+		"vue-loader": "^15.4.2",
+		"vue-winwheel": "^0.1.4"
+	},
+	"devDependencies": {
+		"@vue/cli-service": "^3.1.4",
+		"vue-template-compiler": "^2.5.17"
+	},
+	"postcss": {
+		"plugins": {
+			"autoprefixer": {}
+		}
+	},
+	"browserslist": [
+		"> 1%",
+		"last 2 versions",
+		"not ie <= 8"
+	]
 }

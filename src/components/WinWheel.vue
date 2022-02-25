@@ -29,58 +29,11 @@
 
 
 <script>
-import * as Winwheel from './Winwheel'
+import * as Winwheel from '../js/Winwheel'
 
 export default {
   name: 'VueWinWheel',
-  props:{
-		segments:{
-			default(){
-				return [
-					{
-						textFillStyle: '#fff',
-						fillStyle: '#000',
-						text:'Prize 1'
-					},
-					{
-						textFillStyle: '#000',
-						fillStyle: '#fadede',
-						text:'Prize 2'
-					},
-					{
-						textFillStyle: '#fff',
-						fillStyle: '#000',
-						text:'Prize 3'
-					},
-					{
-						textFillStyle: '#000',
-						fillStyle: '#fadede',
-						text:'Prize 4'
-					},
-					{
-						textFillStyle: '#fff',
-						fillStyle: '#000',
-						text:'Prize 5'
-					},
-					{
-						textFillStyle: '#000',
-						fillStyle: '#fadede',
-						text:'Prize 6'
-					},
-					{
-						textFillStyle: '#fff',
-						fillStyle: '#000',
-						text:'Prize 7'
-					},
-					{
-						textFillStyle: '#000',
-						fillStyle: '#fadede',
-						text:'Prize 8'
-					}
-				]
-			}
-		}
-  },
+  props: ["segments", "rerender"],
   data () {
     return {
       loadingPrize: false,
@@ -98,7 +51,7 @@ export default {
           type: 'spinOngoing',
           duration: 0.5
         }
-      }
+      },
     }
   },
   methods: {
@@ -145,7 +98,7 @@ export default {
       if (this.wheelSpinning) {
         this.theWheel.stopAnimation(false) // Stop the animation, false as param so does not call callback function.
       }
-
+	  console.log("reset wheel")
       this.theWheel.rotationAngle = 0 // Re-set the wheel angle to 0 degrees.
       this.theWheel.draw() // Call draw to render changes to the wheel.
       this.wheelSpinning = false // Reset to false to power buttons and spin can be clicked again.
@@ -160,13 +113,15 @@ export default {
       this.showPrize()
     }
   },
-  computed: {},
-  updated () {},
   mounted () {
     this.initSpin()
     // this.resetWheel()
   },
-  created () {}
+  watch: {
+	rerender() {
+		this.resetWheel();
+	}
+  }
 }
 
 </script>
@@ -268,7 +223,7 @@ export default {
 	right: 0;
 	display: block;
 	z-index: 99999;
-	background-image: url('./spinner-marker.svg');
+	background-image: url('../img/spinner-marker.svg');
 	background-repeat: no-repeat;
 	background-size: contain;
 	background-position: center;
